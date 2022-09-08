@@ -17,6 +17,7 @@ export class ExtractComponent implements OnInit {
   limitPage: number = 10;
   page: number = 1;
   dataPagination:any = [];
+  extractDataNotFound:boolean = false;
   order?: string;
   orderData = OPTIONS_ORDER_DATE;
   filterForm:any = FormGroup;
@@ -40,11 +41,12 @@ export class ExtractComponent implements OnInit {
   getClientSales(limitPage: number, page: number, isPagination:boolean, order?:any, sortFiled?: any,){
     this._extractService.getSalesFiltered(page, limitPage, order, sortFiled).pipe(
       catchError((error) => {
-        alert(error)
+        this.extractDataNotFound = true;
         return throwError(error);
       })
     ).subscribe((sales =>{
       if(sales && sales.length)
+        this.extractDataNotFound = false;
         this.listSales = sales;
         if(!isPagination)
           this.buildPagination();
@@ -53,7 +55,6 @@ export class ExtractComponent implements OnInit {
   buildPagination(){
     this._extractService.getDataPagination().pipe(
       catchError((error) => {
-        alert(error)
         return throwError(error);
       })
     ).subscribe((data =>{

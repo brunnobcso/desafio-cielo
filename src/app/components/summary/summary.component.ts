@@ -15,6 +15,8 @@ export class SummaryComponent implements OnInit {
   clientSalesSummary?: Summary;
   limit: number = 10;
   graphicSales?: GraphicSales[] = [];
+  salesSummaryaNotFound: boolean = false;
+  setDataGraphicNotFound: boolean = false;
   @ViewChild('lastSalesChart', {static: true}) element?: ElementRef;
   constructor(private _extractService: ExtractService) {
     Chart.register(...registerables);
@@ -28,11 +30,12 @@ export class SummaryComponent implements OnInit {
   getSalesSummary(){
     this._extractService.getSalesSummary().pipe(
       catchError((error) => {
-        alert(error)
+        this.salesSummaryaNotFound = true;
         return throwError(error);
       })
     ).subscribe((summary =>{
       if(summary)
+      this.salesSummaryaNotFound = false;
         this.clientSalesSummary = summary;
       }
     ))
@@ -41,11 +44,12 @@ export class SummaryComponent implements OnInit {
   setDataGraphic(){
     this._extractService.getAllSales().pipe(
       catchError((error) => {
-        alert(error)
+        this.setDataGraphicNotFound = true;
         return throwError(error);
       })
     ).subscribe((sales =>{
       if(sales){
+        this.setDataGraphicNotFound = false;
         let graphicValues = [], graphicLabels = [];
         for (let index = 0; index < this.limit; index++) {
           let maxAge = sales.reduce(function(prev, current) {

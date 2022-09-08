@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-6 d-flex">
+    <div class="col-12 col-md-6 my-2" [ngClass]="!salesSummaryaNotFound ? 'd-xl-flex' : ''">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title mb-4">Resumo de vendas</h2>
-          <div class="row">
+
+          <div class="row" *ngIf="!salesSummaryaNotFound; else elseSummaryBlock">
             <div class="col-12 col-md-6">
               <div class="row">
                 <div class="col-12 mb-3">
@@ -30,14 +31,18 @@
               </div>
             </div>
           </div>
+          <ng-template #elseSummaryBlock><p>Dados de resumo não encontrados. Tente reiniciar o json-server</p></ng-template>
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-6 d-flex">
+    <div class="col-12 col-md-6 my-2" [ngClass]="!setDataGraphicNotFound ? 'd-xl-flex' : ''">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body" >
           <h2 class="card-title mb-4">Maiores vendas</h2>
-          <canvas #lastSalesChart width="600"></canvas>
+          <ng-container *ngIf="!setDataGraphicNotFound; else elseGraphicBlock">
+            <canvas #lastSalesChart width="600"></canvas>
+          </ng-container>
+          <ng-template #elseGraphicBlock>Dados do gráfico não encontrados. Tente reiniciar o json-server</ng-template>
         </div>
       </div>
     </div>
