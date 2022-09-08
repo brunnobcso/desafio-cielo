@@ -1,0 +1,42 @@
+a.collapsed-icon{
+  padding: 5px 0 0 8px;
+    background-color: var(--bs-link-color);
+    color: white;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 23px;
+}
+select.custom-select{
+  display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+button.btn-success{
+  font-size: 14px;
+}
+.table-responsive{
+  .table{
+    td, th{
+      text-align: center;
+    }
+    .accordion{
+      .accordion-button{
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        width: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+}

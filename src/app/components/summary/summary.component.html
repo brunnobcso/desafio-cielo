@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 d-flex">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Resumo de vendas</h2>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <h4 class="text-black-50 fw-bold mb-0">Quantidade total de vendas</h4>
+                  <p class="fs-5">{{clientSalesSummary?.totalQuantity}}</p>
+                </div>
+                <div class="col-12">
+                  <h4 class="text-black-50 fw-bold mb-0">Valor total vendido</h4>
+                  <p class="fs-5">{{clientSalesSummary?.totalNetAmount | currency}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <h4 class="text-black-50 fw-bold mb-0">Valor médio vendido</h4>
+                  <p class="fs-5">{{clientSalesSummary?.totalQuantity | currency}}</p>
+                </div>
+                <div class="col-12">
+                  <h4 class="text-black-50 fw-bold mb-0">Última Venda</h4>
+                  <p class="fs-5">{{clientSalesSummary?.finalDate | date: 'dd/MM/yyyy'}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 d-flex">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Maiores vendas</h2>
+          <canvas #lastSalesChart width="600"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
