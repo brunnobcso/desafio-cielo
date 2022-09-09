@@ -39,10 +39,8 @@
       <div class="card">
         <div class="card-body" >
           <h2 class="card-title mb-4">Maiores vendas</h2>
-          <ng-container *ngIf="!setDataGraphicNotFound; else elseGraphicBlock">
             <canvas #lastSalesChart width="600"></canvas>
-          </ng-container>
-          <ng-template #elseGraphicBlock>Dados do gráfico não encontrados. Tente reiniciar o json-server</ng-template>
+          <p *ngIf="setDataGraphicNotFound">Dados do gráfico não encontrados. Tente reiniciar o json-server</p>
         </div>
       </div>
     </div>

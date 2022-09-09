@@ -59,7 +59,7 @@ export class SummaryComponent implements OnInit {
           graphicLabels.push(this.formartDate(maxAge.date));
           sales = sales.filter(x => x.id !== maxAge.id);
         }
-        this.createChart(graphicValues, graphicLabels);
+          this.createChart(graphicValues, graphicLabels);
       }
     }))
   }
